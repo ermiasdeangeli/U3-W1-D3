@@ -9,8 +9,7 @@ class CommentArea extends Component {
     }
 
     componentDidMount() {
-        // Sostituisci con il tuo endpoint API effettivo
-        fetch(`https://striveschool-api.herokuapp.com/api/comments/${this.props.bookId}`)
+        fetch(`https://striveschool-api.herokuapp.com/api/comments`)
             .then(response => response.json())
             .then(data => this.setState({ comments: data }));
     }
