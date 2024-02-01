@@ -1,8 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import {Component} from 'react';
+import CommentArea from './CommentArea';
 
-class SingleBook extends Component {
+class SingleBook extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,19 +21,20 @@ class SingleBook extends Component {
         const { selected } = this.state;
 
         return(
-            <Card 
-                style={{ 
-                    width: '18rem', 
-                    transform: selected ? 'rotateY(180deg)' : 'none',
-                    transition: 'transform 0.6s'
-                }}
-                onClick={this.handleBookClick}
-            >
-                <Card.Img variant="top" src={book.img} />
-                <Card.Body>
-                    <Card.Title>{book.title}</Card.Title>
-                </Card.Body>
-            </Card>
+            <div onClick={this.handleBookClick}>
+                <Card 
+                    style={{ 
+                        width: '18rem', 
+                        border: selected ? '3px solid red' : 'none' 
+                    }}
+                >
+                    <Card.Img variant="top" src={book.img} />
+                    <Card.Body>
+                        <Card.Title>{book.title}</Card.Title>
+                    </Card.Body>
+                </Card>
+                {selected && <CommentArea bookId={book.id} />}
+            </div>
         )
     }
 }
